@@ -60,22 +60,22 @@
             window.addEventListener("load", () => {
                 console.log(window.location.href)
                 switch (window.location.href) {
-                    case "https://engineer-in-forest.tumblr.com/tagged/originals":
-                        let ogBtn = document.getElementById("originals");
-                        ogBtn.setAttribute("pointer-events", "none");
-                        ogBtn.classList.add("selected_button");
-                        ogBtn.style.pointerEvents = "none";
+                    case '{text:Navigation 2 Link}':
+                        let btn2 = document.getElementById("btn2");
+                        btn2.setAttribute("pointer-events", "none");
+                        btn2.classList.add("selected_button");
+                        btn2.style.pointerEvents = "none";
                         break;
-                    case "https://engineer-in-forest.tumblr.com/tagged/nature":
-                        let natureBtn = document.getElementById("nature");
-                        natureBtn.setAttribute("pointer-events", "none");
-                        natureBtn.classList.add("selected_button");
-                        natureBtn.style.pointerEvents = "none";
+                    case '{text:Navigation 3 Link}':
+                        let btn3 = document.getElementById("btn3");
+                        btn3.setAttribute("pointer-events", "none");
+                        btn3.classList.add("selected_button");
+                        btn3.style.pointerEvents = "none";
                         break;
                     default:
-                        let homeBtn = document.getElementById("home");
-                        homeBtn.classList.add("selected_button");
-                        homeBtn.style.pointerEvents = "none";
+                        let btn1 = document.getElementById("btn1");
+                        btn1.classList.add("selected_button");
+                        btn1.style.pointerEvents = "none";
                         break;
                 }
 
@@ -185,14 +185,14 @@
 
                         {block:IfNavigation1Link}
                             <div style="display: flex; gap: 5px; margin-top: .5em;">
-                                <a id='{text:Navigation 1 Text}' class="button" href='{text:Navigation 1 Link}' class="button">{text:Navigation 1 Text}</a>
+                                <a id='btn1' class="button" href='{text:Navigation 1 Link}' class="button">{text:Navigation 1 Text}</a>
 
                                 {block:IfNavigation2Link}
-                                    <a id='{text:Navigation 2 Text}'  class="button" href='{text:Navigation 2 Link}' class="button">{text:Navigation 2 Text}</a>
+                                    <a id='btn2'  class="button" href='{text:Navigation 2 Link}' class="button">{text:Navigation 2 Text}</a>
                                 {block:IfNavigation2Link}
 
                                 {block:IfNavigation3Link}
-                                    <a id='{text:Navigation 3 Text}' class="button" href='{text:Navigation 3 Link}' class="button">{text:Navigation 3 Text}</a>
+                                    <a id='btn3' class="button" href='{text:Navigation 3 Link}' class="button">{text:Navigation 3 Text}</a>
                                 {block:IfNavigation3Link}
                             </div>
                         {/block:IfNavigation1Link}
