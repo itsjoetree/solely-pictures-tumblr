@@ -1,0 +1,255 @@
+<!-- ****************************************
+    solely-pictures tumblr theme
+
+    Made by a plant dad of 14 and counting.
+
+    Hope you enjoy the theme :)
+    
+    @itsjoetree
+    engineer-in-forest.tumblr.com
+    ****************************************
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="image:Background" content=""/>
+        <meta name="text:Navigation 1 Text" content=""/>
+        <meta name="text:Navigation 1 Link" content=""/>
+        <meta name="text:Navigation 2 Text" content=""/>
+        <meta name="text:Navigation 2 Link" content=""/>
+        <meta name="text:Navigation 3 Text" content=""/>
+        <meta name="text:Navigation 3 Link" content=""/>
+        <meta name="color:Selected Button Color" content=""/>
+        <meta name="color:Primary Color" content=""/>
+        <meta name="color:Background Color" content=""/>
+        <meta name="color:Button Text Selected" content=""/>
+        <meta name="image:Social Media Image 1" content=""/>
+        <meta name="text:Social Media Link 1" content=""/>
+        <meta name="image:Social Media Image 2" content=""/>
+        <meta name="text:Social Media Link 2" content=""/>
+        <meta name="image:Social Media Image 3" content=""/>
+        <meta name="text:Social Media Link 3" content=""/>
+        <meta name="image:Profile Photo" content=""/>
+        <meta name="text:My Name" content=""/>
+        <meta name="text:Bio" content=""/>
+        <meta name="color:Bio Text Color" content=""/>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://static.tumblr.com/ikeq9mi/DfYl6o46t/scrolltotop.min.js"></script><a href="javascript:;" id="scrollToTop"><img src="https://68.media.tumblr.com/tumblr_lpvu9709KH1qlzq96.png" border="0"></a>
+        <script>
+            let updateImages = () => {
+                const images = document.querySelectorAll("img[data-npf]");
+
+                images.forEach(i => {
+                    try {
+                        i.src = i.getAttribute("data-npf").split('"url":"')[1].split('"')[0].replace(' ', '/')
+                        i.removeAttribute("data-npf")
+
+                        if (i instanceof HTMLImageElement) {
+                            i.style.display = "static";
+                        }
+                    }
+                    catch {
+                        const div = document.getElementById("div-" + i.getAttribute("data-id"));
+                        div.remove();
+                    }
+                });
+            }
+
+            window.addEventListener("load", () => {
+                console.log(window.location.href)
+                switch (window.location.href) {
+                    case "https://engineer-in-forest.tumblr.com/tagged/originals":
+                        let ogBtn = document.getElementById("originals");
+                        ogBtn.setAttribute("pointer-events", "none");
+                        ogBtn.classList.add("selected_button");
+                        ogBtn.style.pointerEvents = "none";
+                        break;
+                    case "https://engineer-in-forest.tumblr.com/tagged/nature":
+                        let natureBtn = document.getElementById("nature");
+                        natureBtn.setAttribute("pointer-events", "none");
+                        natureBtn.classList.add("selected_button");
+                        natureBtn.style.pointerEvents = "none";
+                        break;
+                    default:
+                        let homeBtn = document.getElementById("home");
+                        homeBtn.classList.add("selected_button");
+                        homeBtn.style.pointerEvents = "none";
+                        break;
+                }
+
+                updateImages();
+            })
+            
+            $(window).scroll(function() {
+            var hT = $('#scroll-to')?.offset()?.top,
+                hH = $('#scroll-to')?.outerHeight(),
+                wH = $(window).height(),
+                wS = $(this).scrollTop();
+                
+                if (wS > (hT+hH-wH)){
+                    updateImages();
+                }
+            });
+        </script>
+
+        <style type="text/css">
+            #scrollToTop:link,
+            #scrollToTop:visited
+            {
+                opacity: .8;
+                display: none;
+                position: fixed;
+                top: 15px;
+                right: 15px;
+            }
+
+            a.button {
+                border: 1px solid {color:Primary Color};
+                border-radius: 10px;
+                max-width: 100%;
+                color: {color:Primary Color};
+                background-color: {color:Background Color};
+                padding: 5px;
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+
+            .selected_button,
+            a.button:hover {
+                color: {color:Button Text Selected} !important; 
+                background-color: {color:Selected Button Color} !important;
+                cursor: pointer;
+            }
+
+            .photo {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .tumblr_blog {
+                display: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            body:after{
+                content: "";
+                position: fixed;
+                top: 0;
+                height: 100vh;
+                left: 0;
+                right: 0;
+                z-index: -1;
+                background: url("{image:Background}") center center;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+
+            @media screen and (max-width: 800px) {
+                #content {
+                    flex-direction: column;
+                    gap: 1em !important;
+                }
+                
+                #me {
+                    position: static !important;
+                }
+            }
+
+            @media only screen and (max-width: 768px) {
+                body {
+                    background-size: 100% 100vh;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="content" style="margin-top: 1em; display: flex; justify-content: center; align-items: center; gap: 5em; max-width: 100%;">
+            <div style="width: 300px;">
+                <div id="me" style="max-width: 100%; background-color: {color:Background Color}; color: black; padding: 10px; position: fixed; right: 60vw; top: 1em;">
+                    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; width: 300px; max-width: 100%;">
+                        <img style="max-width: 100%;" src='{image:Profile Photo}' />
+
+                        <span style='margin-top: .5em; font-size: 25px; font-weight: bolder; color: {color:Primary Color}'>
+                            {text:My Name}
+                        </span>
+
+                        {block:IfNavigation1Link}
+                            <div style="display: flex; gap: 5px; margin-top: .5em;">
+                                <a id='{text:Navigation 1 Text}' class="button" href='{text:Navigation 1 Link}' class="button">{text:Navigation 1 Text}</a>
+
+                                {block:IfNavigation2Link}
+                                    <a id='{text:Navigation 2 Text}'  class="button" href='{text:Navigation 2 Link}' class="button">{text:Navigation 2 Text}</a>
+                                {block:IfNavigation2Link}
+
+                                {block:IfNavigation3Link}
+                                    <a id='{text:Navigation 3 Text}' class="button" href='{text:Navigation 3 Link}' class="button">{text:Navigation 3 Text}</a>
+                                {block:IfNavigation3Link}
+                            </div>
+                        {/block:IfNavigation1Link}
+
+                        <em style="color: {color:Bio Text Color}; margin-top: .5em;">
+                            {text:Bio}
+                        </em>
+
+                        {block:IfSocialMediaLink1}
+                            <div style="display: flex; align-items: center; justify-content: center; gap: .7em;">
+                                <a href='{text:Social Media Link 1}'>
+                                    <img style="padding-top: 10px;" alt="instagram" width="30" heigh="30" src='{image:Social Media Image 1}' />
+                                </a>
+                                
+                                {block:IfSocialMediaLink2}
+                                    <a href='{text:Social Media Link 2}' style="margin-bottom: 5px;">
+                                        <img style="padding-top: 10px;" alt="instagram" width="30" heigh="30" src='{image:Social Media Image 2}' />
+                                    </a>
+                                {block:IfSocialMediaLink2}
+
+                                {block:IfSocialMediaLink3}
+                                    <a href='{text:Social Media Link 3}' style="margin-bottom: 5px;">
+                                        <img style="padding-top: 10px;" alt="instagram" width="30" heigh="30" src='{image:Social Media Image 3}' />
+                                    </a>
+                                {block:IfSocialMediaLink3}
+                            </div>
+                        {/block:IfSocialMediaLink1}
+                    </div>
+                </div>
+            </div>
+
+            <div id="posts" style="width: 450px; max-width: 100%;">
+                <div class=“autopagerize_page_element”></div>
+                <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                    {block:Posts}
+                        {block:Photo}
+                            <div style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; max-width: 90%; margin-bottom: 1em;">
+                                {LinkOpenTag}
+                                    <img alt="blog post" class="photo" src={PhotoURL-400} />
+                                {LinkCloseTag}
+                            </div>
+                        {/block:Photo}
+
+                        {block:Text}
+                            <div id="div-{PostID}" style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; width: 90%; max-width: 90%; margin-bottom: 1em;">
+                                <div>
+                                    <a href="{ShortURL}">
+                                        <img style="display: hidden;" alt="blog post" id="scroll-to" class="photo" data-id="{PostID}" data-npf='{PlaintextNPF}' />
+                                    </a>
+                                </div>
+                            </div>
+                        {/block:Text}
+                    {/block:Posts}
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="https://matthewrayfield.github.io/tumblr-infinite-scrolling/infinitescrolling.js"></script>
+</html>
