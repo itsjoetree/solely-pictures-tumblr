@@ -239,7 +239,7 @@
                 <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                     {block:Posts}
                         {block:Photo}
-                            <div style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; max-width: 90%; margin-bottom: 1em;">
+                            <div style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; max-width: 90vw; margin-bottom: 1em;">
                                 {LinkOpenTag}
                                     <img alt="blog post" class="photo" src={PhotoURL-400} />
                                 {LinkCloseTag}
@@ -247,7 +247,7 @@
                         {/block:Photo}
 
                         {block:Text}
-                            <div id="div-{PostID}" style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; width: 90%; max-width: 90%; margin-bottom: 1em;">
+                            <div id="div-{PostID}" style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; max-width: 90vw; margin-bottom: 1em;">
                                 <div>
                                     <a href="{ShortURL}">
                                         <img style="display: hidden;" alt="blog post" id="scroll-to" class="photo" data-id="{PostID}" data-npf='{PlaintextNPF}' />
