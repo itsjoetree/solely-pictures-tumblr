@@ -1,8 +1,12 @@
 <!-- ****************************************
     solely-pictures tumblr theme
 
-    Made by a plant dad of 14 and counting, hope you enjoy the theme :)
-    
+    Heyy hope you enjoy the theme, I'll be adding updates
+    on a regular basis. Feel free to DM me for suggestions!
+
+    NOTE: This theme is mobile friendly, be sure to go into
+    "Advanced Options" and turn off "Use default mobile theme".
+
     @itsjoetree
     engineer-in-forest.tumblr.com
     ****************************************
@@ -12,12 +16,14 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="image:Background" content=""/>
+        <meta name="if:Turn Action Icons White" content=""/>
         <meta name="text:Navigation 1 Text" content=""/>
         <meta name="text:Navigation 1 Link" content=""/>
         <meta name="text:Navigation 2 Text" content=""/>
         <meta name="text:Navigation 2 Link" content=""/>
         <meta name="text:Navigation 3 Text" content=""/>
         <meta name="text:Navigation 3 Link" content=""/>
+        <meta name="color:Post Action Button Color" content=""/>
         <meta name="color:Selected Button Color" content=""/>
         <meta name="color:Primary Color" content=""/>
         <meta name="color:Background Color" content=""/>
@@ -56,7 +62,6 @@
             }
 
             window.addEventListener("load", () => {
-                console.log(window.location.href)
                 switch (window.location.href) {
                     case '{text:Navigation 2 Link}':
                         let btn2 = document.getElementById("btn2");
@@ -101,6 +106,15 @@
                 position: fixed;
                 top: 15px;
                 right: 15px;
+            }
+
+            .action-buttons {
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                gap: 1em;
+                height: 15px;
+                margin: 0;
             }
 
             .tmblr-iframe-pushdown,
@@ -239,19 +253,43 @@
                 <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                     {block:Posts}
                         {block:Photo}
-                            <div style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; max-width: 90vw; margin-bottom: 1em;">
+                            <div style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; padding-bottom: 5px; max-width: 90vw; margin-bottom: 1em;">
                                 {LinkOpenTag}
                                     <img alt="blog post" class="photo" src={PhotoURL-400} />
                                 {LinkCloseTag}
+
+                                <div class="action-buttons">
+                                    {block:IfNotTurnActionIconsWhite}
+                                        <span style="align-self: center; padding-top: 2px;">{LikeButton size="15" color="black"}</span>
+                                        <span style="align-self: center;">{ReblogButton size="15" color="black"}</span>
+                                    {/block:IfNotTurnActionIconsWhite}
+
+                                    {block:IfTurnActionIconsWhite}
+                                        <span style="align-self: center; padding-top: 2px;">{LikeButton size="15" color="white"}</span>
+                                        <span style="align-self: center;">{ReblogButton size="15" color="white"}</span>
+                                    {/block:IfTurnActionIconsWhite}
+                                </div>
                             </div>
                         {/block:Photo}
 
                         {block:Text}
-                            <div id="div-{PostID}" style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; max-width: 90vw; margin-bottom: 1em;">
+                            <div id="div-{PostID}" style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; padding-bottom: 5px; max-width: 90vw; margin-bottom: 1em;">
                                 <div>
                                     <a href="{ShortURL}">
                                         <img style="display: hidden;" alt="blog post" id="scroll-to" class="photo" data-id="{PostID}" data-npf='{PlaintextNPF}' />
                                     </a>
+                                </div>
+
+                                <div class="action-buttons">
+                                    {block:IfNotTurnActionIconsWhite}
+                                        <span style="align-self: center; padding-top: 2px;">{LikeButton size="15" color="black"}</span>
+                                        <span style="align-self: center;">{ReblogButton size="15" color="black"}</span>
+                                    {/block:IfNotTurnActionIconsWhite}
+
+                                    {block:IfTurnActionIconsWhite}
+                                        <span style="align-self: center; padding-top: 2px;">{LikeButton size="15" color="white"}</span>
+                                        <span style="align-self: center;">{ReblogButton size="15" color="white"}</span>
+                                    {/block:IfTurnActionIconsWhite}
                                 </div>
                             </div>
                         {/block:Text}
