@@ -49,9 +49,8 @@
                         i.src = i.getAttribute("data-npf").split('"url":"')[1].split('"')[0].replace(' ', '/')
                         i.removeAttribute("data-npf")
 
-                        if (i instanceof HTMLImageElement) {
-                            i.style.display = "static";
-                        }
+                        const parentDiv = document.getElementById("div-" + i.getAttribute("data-id"));
+                        parentDiv.classList.remove("hidden");
                     }
                     catch {
                         const div = document.getElementById("div-" + i.getAttribute("data-id"));
@@ -251,10 +250,10 @@
                         {/block:Photo}
 
                         {block:Text}
-                            <div id="div-{PostID}" style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; max-width: 90vw; margin-bottom: 1em;">
+                            <div id="div-{PostID}" class="hidden" style="background-color: {color:Background Color}; color: {color:Background Color}; padding: 20px; max-width: 90vw; margin-bottom: 1em;">
                                 <div>
                                     <a href="{ShortURL}">
-                                        <img style="display: hidden;" alt="blog post" id="scroll-to" class="photo" data-id="{PostID}" data-npf='{PlaintextNPF}' />
+                                        <img alt="blog post" id="scroll-to" class="photo" data-id="{PostID}" data-npf='{PlaintextNPF}' />
                                     </a>
                                 </div>
                             </div>
