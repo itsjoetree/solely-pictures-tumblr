@@ -43,15 +43,14 @@
         <meta name="color:Bio Text Color" content=""/>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://static.tumblr.com/ikeq9mi/DfYl6o46t/scrolltotop.min.js"></script>
-        <a href="javascript:;" id="scrollToTop">
+        <script src="https://static.tumblr.com/ikeq9mi/DfYl6o46t/scrolltotop.min.js"></script><a href="javascript:;" id="scrollToTop">
             {block:IfCustomScrollUpArrowTurnedOn}
                 <img src='{image:Scroll Up Arrow}' border="0">
-            {/block:IfScrollUpArrowTurnedOn}
+            {/block:IfCustomScrollUpArrowTurnedOn}
 
             {block:IfNotCustomScrollUpArrowTurnedOn}
                 <img border="0" src="data:image/png;base64,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">            {/block:IfNotScrollUpArrowTurnedOn}
-            {/block:IfNotScrollUpArrowTurnedOn}
+            {/block:IfNotCustomScrollUpArrowTurnedOn}
         </a>
         <script>
             let updateImages = () => {
@@ -325,6 +324,8 @@
 
     <script>
         /************
+        Infinite Scrolling
+        ------------------
         Created by Cody Sherman
         Tweaked by Matthew Rayfield
         Like button functionality fixed by: engineer-in-forest.tumblr.com
