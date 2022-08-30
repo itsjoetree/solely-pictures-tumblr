@@ -334,8 +334,10 @@
         ------------------
         Created by Cody Sherman
         Tweaked by Matthew Rayfield
-        Like button functionality fixed by: engineer-in-forest.tumblr.com
+        Like button functionality fixed by Joe Salinas
         *************/
+        var globalIds = [];
+
         var tumblrAutoPager = {
                 url: "http://proto.jp/",
                 ver: "0.1.7",
@@ -565,9 +567,13 @@
                     function watch_scroll() {
                         const imgs = document.querySelectorAll("img[data-id]");
 
-                        let ids = [];
-                        imgs.forEach(img => ids.push(img.getAttribute("data-id")));
-                        Tumblr.LikeButton.get_status_by_post_ids(ids);
+                        if (globalIds.length !== imgs.length) {
+                            let ids = [];
+                            imgs.forEach(img => ids.push(img.getAttribute("data-id")));
+                            globalIds = ids;
+
+                            Tumblr.LikeButton.get_status_by_post_ids(globalIds);
+                        }
                         
                         var d = document.compatMode == "BackCompat" ? document.body : document.documentElement;
                         var r = d.scrollHeight - d.clientHeight - (d.scrollTop || document.body.scrollTop);
