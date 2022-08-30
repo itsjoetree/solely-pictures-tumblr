@@ -118,6 +118,11 @@
                 right: 15px;
             }
 
+            .hidden {
+                visibility: hidden;
+                position: absolute;
+            }
+
             .action-buttons {
                 display: flex;
                 justify-content: right;
@@ -355,6 +360,11 @@
                     } else if (location.protocol + "//" + tAP.LN + "/" != lh) {
                         return;
                     };
+
+                    let ids = [];
+                    imgs.forEach(img => ids.push(img.getAttribute("data-id")));
+                    Tumblr.LikeButton.get_status_by_post_ids(ids);
+
                     var gPFncs = [];
                     gPFncs[0] = function(aE) {
                         var r = [];
