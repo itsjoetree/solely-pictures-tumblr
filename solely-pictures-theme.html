@@ -72,7 +72,14 @@
             }
 
             window.addEventListener("load", () => {
+                updateImages();
+
                 switch (window.location.href) {
+                    case '{text:Navigation 1 Link}':
+                        let btn1 = document.getElementById("btn1");
+                        btn1.classList.add("selected_button");
+                        btn1.style.pointerEvents = "none";
+                        break;
                     case '{text:Navigation 2 Link}':
                         let btn2 = document.getElementById("btn2");
                         btn2.setAttribute("pointer-events", "none");
@@ -85,14 +92,7 @@
                         btn3.classList.add("selected_button");
                         btn3.style.pointerEvents = "none";
                         break;
-                    default:
-                        let btn1 = document.getElementById("btn1");
-                        btn1.classList.add("selected_button");
-                        btn1.style.pointerEvents = "none";
-                        break;
                 }
-
-                updateImages();
             })
             
             $(window).scroll(function() {
