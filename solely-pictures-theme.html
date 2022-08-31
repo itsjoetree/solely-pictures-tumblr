@@ -69,14 +69,16 @@
                         i.src = i.getAttribute("data-npf").split('"url":"')[1].split('"')[0].replace(' ', '/');
 
                         {block:IfShowTextOfPost}
-                            let text = i.getAttribute("data-npf").split('"text":"')[1].split('"')[0];
-
-                            if (text != null) {
+                            try {
+                                let text = i.getAttribute("data-npf").split('"text":"')[1].split('"')[0];
                                 let id = i.getAttribute("data-id");
                                 let textContainer = document.getElementById("text-" + id);
 
                                 textContainer.innerText = text;
                                 textContainer.classList.remove("hidden");
+                            }
+                            catch {
+                                // continue execution
                             }
                         {/block:IfShowTextOfPost}
 
