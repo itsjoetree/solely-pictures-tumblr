@@ -14,6 +14,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="font:Name Font" content="Helvetica Neue"/>
+        <meta name="font:Body Font" content="Arial, Helvetica, sans-serif"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="image:Background" content=""/>
         <meta name="if:Show Text Of Post" content=""/>
@@ -206,6 +208,7 @@
             }
 
             body {
+                font: 16px {font:Body Font};
                 background-color: {color:Webpage Background Color};
             }
 
@@ -252,7 +255,7 @@
                     <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; width: 300px; max-width: 100%;">
                         <img style="max-width: 100%;" src='{image:Profile Photo}' />
 
-                        <span style='margin-top: .5em; font-size: 25px; font-weight: bolder; color: {color:Primary Color}'>
+                        <span style='margin-top: 5px; color: {color:Primary Color}; font-size: 35px; font: 35px {font:Name Font};'>
                             {text:My Name}
                         </span>
 
@@ -270,9 +273,9 @@
                             </div>
                         {/block:IfNavigation1Link}
 
-                        <em style="color: {color:Bio Text Color}; margin-top: .5em;">
+                        <span style="color: {color:Bio Text Color}; margin-top: .5em;">
                             {text:Bio}
-                        </em>
+                        </span>
 
                         {block:IfSocialMediaLink1}
                             <div style="display: flex; align-items: center; justify-content: center; gap: .7em;">
