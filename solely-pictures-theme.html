@@ -16,6 +16,12 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="image:Background" content=""/>
+        <meta name="if:Show Text Of Post" content=""/>
+        <meta name="color:Text Of Post Color" content=""/>
+        <meta name="select:Text Of Post Position" content="flex-start" title="Left">
+        <meta name="select:Text Of Post Position" content="center" title="Center">
+        <meta name="select:Text Of Post Position" content="flex-end" title="Right">
+        <meta name="color:Primary Color" content=""/>
         <meta name="if:Custom Scroll Up Arrow Turned On" content=""/>
         <meta name="image:Scroll Up Arrow" content=""/>
         <meta name="if:Turn Action Icons White" content=""/>
@@ -58,8 +64,21 @@
 
                 images.forEach(i => {
                     try {
-                        i.src = i.getAttribute("data-npf").split('"url":"')[1].split('"')[0].replace(' ', '/')
-                        i.removeAttribute("data-npf")
+                        i.src = i.getAttribute("data-npf").split('"url":"')[1].split('"')[0].replace(' ', '/');
+
+                        {block:IfShowTextOfPost}
+                            let text = i.getAttribute("data-npf").split('"text":"')[1].split('"')[0];
+
+                            if (text != null) {
+                                let id = i.getAttribute("data-id");
+                                let textContainer = document.getElementById("text-" + id);
+
+                                textContainer.innerText = text;
+                                textContainer.classList.remove("hidden");
+                            }
+                        {/block:IfShowTextOfPost}
+
+                        i.removeAttribute("data-npf");
 
                         const parentDiv = document.getElementById("div-" + i.getAttribute("data-id"));
                         parentDiv.classList.remove("hidden");
@@ -306,6 +325,7 @@
                                 <div>
                                     <a href="{ShortURL}">
                                         <img alt="blog post" id="scroll-to" class="photo" data-id="{PostID}" data-npf='{PlaintextNPF}' />
+                                        <div style="display: flex; justify-content: {select:Text Of Post Position}; color: {color:Text Of Post Color};" id="text-{PostID}" class="hidden"></div>
                                     </a>
 
                                     <div class="action-buttons">
@@ -582,7 +602,6 @@
                             p++;
                             sendRequest(addNextPage, "", "GET", location.protocol + "//" + tAP.LN + "/page/" + p, true);
                         }
-                        
 
                         setTimeout(arguments.callee, 200);
                     };
